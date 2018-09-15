@@ -77,20 +77,20 @@ public:
             return *this;
         }
 
-        Iterator<U>& operator+(ptrdiff_t x) const {
+        Iterator<U> operator+(ptrdiff_t x) const {
             return Iterator((pos + x) % vector->size_, vector);
         }
 
-        Iterator<U>& operator-(ptrdiff_t x) const {
+        Iterator<U> operator-(ptrdiff_t x) const {
             return Iterator((pos - x + vector->size_) % vector->size_, vector);
         }
 
         friend ptrdiff_t operator-(Iterator<U> const& first, Iterator<U> const& second) {
-            return first->pos - second->pos;
+            return first.pos - second.pos;
         }
 
         friend bool operator<(Iterator<U> const& first, Iterator<U> const& second) {
-            return first->pos - second->pos;
+            return first.pos - second.pos;
         }
 
         friend bool operator>(Iterator<U> const& first, Iterator<U> const& second) {
