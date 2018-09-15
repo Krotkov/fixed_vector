@@ -45,7 +45,7 @@ public:
 
         Iterator<U>& operator++() {
             pos++;
-            if (pos == vector->size_) pos = 0;
+            if (pos == vector->size_+1) pos = 0;
             return *this;
         }
 
@@ -83,14 +83,6 @@ public:
 
         Iterator<U>& operator-(ptrdiff_t x) const {
             return Iterator((pos - x + vector->size_) % vector->size_, vector);
-        }
-
-        bool operator==(Iterator<U> const &other) const {
-            return (vector == other.vector && pos == other.pos);
-        }
-
-        bool operator!=(Iterator<U> const& other) const {
-            return (vector != other.vector || pos != other.pos);
         }
 
         friend ptrdiff_t operator-(Iterator<U> const& first, Iterator<U> const& second) {
